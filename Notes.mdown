@@ -1,0 +1,98 @@
+1.  Install the following
+
+            yarn add react-navigation
+            yarn add react-navigation-material-bottom-tabs
+
+2.  Import the following
+
+        import { createMaterialBottomTabNavigator } from "react-navigation-material-bottom-tabs";
+
+3.  Create a const `AppTabNavigator` as following
+
+        const AppTabNavigator = createMaterialBottomTabNavigator(
+        {
+            Home: {
+            screen: HomeScreen,
+            navigationOptions: {
+                tabBarLabel: "Home",
+                tabBarIcon: ({ tintColor }) => (
+                <Icon name="ios-home" color={tintColor} size={24} />
+                )
+            }
+            },
+            Setting: {
+            screen: SettingScreen,
+            navigationOptions: {
+                tabBarLabel: "Settings",
+                tabBarIcon: ({ tintColor }) => (
+                <Icon name="ios-settings" color={tintColor} size={24} />
+                )
+            }
+            }
+        },
+        {
+            initialRouteName: "Home",
+            shifting: true, //to get nice animiation when pressing on tabs
+            activeTintColor: "orange",
+            inactiveTintColor: "grey",
+            barStyle: { backgroundColor: "#fff" } // to make sure that background of button are white
+        }
+        );
+
+4.  Add AppTabNavigator into the render as following
+
+export default class App extends React.Component {
+render() {
+return <AppTabNavigator />;
+}
+}
+
+5. Final code as following
+
+
+        import React from "react";
+        import { StyleSheet, Text, View } from "react-native";
+        import { createMaterialBottomTabNavigator } from "react-navigation-material-bottom-tabs";
+        import Icon from "react-native-vector-icons/Ionicons";
+        import HomeScreen from "./Component/Home";
+        import SettingScreen from "./Component/Settings";
+
+        export default class App extends React.Component {
+        render() {
+            return <AppTabNavigator />;
+        }
+        }
+
+        const AppTabNavigator = createMaterialBottomTabNavigator(
+        {
+            Home: {
+            screen: HomeScreen,
+            navigationOptions: {
+                tabBarLabel: "Home",
+                tabBarIcon: ({ tintColor }) => (
+                <Icon name="ios-home" color={tintColor} size={24} />
+                )
+            }
+            },
+            Setting: {
+            screen: SettingScreen,
+            navigationOptions: {
+                tabBarLabel: "Settings",
+                tabBarIcon: ({ tintColor }) => (
+                <Icon name="ios-settings" color={tintColor} size={24} />
+                )
+            }
+            }
+        },
+        {
+            initialRouteName: "Home",
+            shifting: true,
+            activeTintColor: "orange",
+            inactiveTintColor: "grey",
+            barStyle: { backgroundColor: "#fff" }
+        }
+        );
+
+6. Difference between basic and advance Bottom Tab Navigation is the libary we are using. In basic bottom tap, we are using `createBottomTabNavigator` and in advance we are using `createMaterialBottomTabNavigator`
+
+![alt text](https://theteamwarehouse.nyc3.digitaloceanspaces.com/WareHouse/WareHouse/AdvanceBottomNavigator.06.41%20AM.png)
